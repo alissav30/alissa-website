@@ -397,3 +397,73 @@ canvas {
     color: #ccc;
   }
 
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .award-card {
+    padding: 15px;
+    background-color: var(--dark-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .award-card:hover {
+    transform: translateY(-5px);
+    background-color: #444;
+  }
+  
+  .award-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .award-header i {
+    font-size: 20px;
+    transition: transform 0.3s;
+  }
+  
+  .award-header:hover {
+    color: #e8a0be;
+  }
+  
+  .award-card h4 {
+    font-family: 'Shadows Into Light', sans-serif;
+    font-size: 20px;
+    margin: 0 0 10px 0;
+  }
+  
+  .award-card h3 {
+    font-size: 24px;
+    margin-bottom: 4px;
+    font-family: 'Bitter', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  }
+  
+  .award-card p {
+    font-family: 'Bitter', sans-serif;
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  .award-details {
+    display: none;
+    margin-top: 10px;
+    animation: fadeIn 0.3s;
+  }
+  
+  .award-summary {
+    font-size: 14px;
+    font-style: italic;
+    color: #ccc;
+  }
+  

@@ -182,24 +182,108 @@
                 <br>&nbsp;-Jhene Aiko in calm & patient</h5>
           </blockquote>
 
-        <section class="light">
+          <section class="light">
+            <h2>Awards</h2>
+            <div class="awards-grid">
 
+            <div class="award-card">
+                <div class="award-header" onclick="toggleDetails('award1')">
+                    <h3>CS194H Social Impact Award</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <h4>Stanford CS</h4>
+                <p class="award-summary">Mar 2024</p>
+                <div id="award1" class="award-details">
+                    <p>Earned the Social Impact Award for The Giving Tree in CS194H (March 2024).</p>
+                </div>
+            </div>
   
-          <h2>Awards</h2>
+            <div class="award-card">
+                <div class="award-header" onclick="toggleDetails('award2')">
+                    <h3>NYT Maker Week Most Accessible Award</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <h4>The New York Times</h4>
+                <p class="award-summary">Aug 2022</p>
+                <div id="award2" class="award-details">
+                    <p>Led and presented for the team that built Crinkle (an audio for accessibility project) that won the Most Accessible Award at NYT's Maker Week Hackathon.</p>
+                </div>
+            </div>
+            <div class="award-card">
+                <div class="award-header" onclick="toggleDetails('award1')">
+                    <h3>CS147 Personal Impact Award</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <h4>Stanford CS</h4>
+                <p class="award-summary">Mar 2022</p>
+                <div id="award1" class="award-details">
+                    <p>Earned the Personal Impact Award for courtesy in CS147 (March 2022).</p>
+                </div>
+            </div>
   
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+            <div class="award-card">
+                <div class="award-header" onclick="toggleDetails('award3')">
+                    <h3>Public Interest Technology Summer Fellowship</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <h4>Princeton's Center for Information Technology Policy</h4>
+                <p class="award-summary">May 2021</p>
+                <div id="award3" class="award-details">
+                    <p>One of 15 college undergraduates selected to get first-hand experience working on technology policy at the federal, state and local level through a bootcamp, clinic-style seminars, and a tech policy internship.</p>
+                </div>
+            </div>
+  
+            <div class="award-card">
+                <div class="award-header" onclick="toggleDetails('award4')">
+                    <h3>Bluebonnet Data Fellowship</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <h4>Bluebonnet Data</h4>
+                <p class="award-summary">Feb 2021</p>
+                <div id="award4" class="award-details">
+                    <p>Awarded fellowship for people with skills in coding and data science to work as data analysts for political campaigns + causes across the country.</p>
+                </div>
+            </div>
+  
+            <div class="award-card">
+                <div class="award-header" onclick="toggleDetails('award5')">
+                    <h3>Cardinal Quarter Fellowship</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <h4>Haas Center for Public Service</h4>
+                <p class="award-summary">Feb 2021</p>
+                <div id="award5" class="award-details">
+                    <p>Selected by Stanford's Haas Center as a fellow to receive funding to take a quarter off from school to work in public service.</p>
+                </div>
+            </div>
+  
+            <div class="award-card">
+                <div class="award-header" onclick="toggleDetails('award6')">
+                    <h3>Stanford MS&E Undergraduate Diversity in Research Fellowship</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <h4>Stanford MS&E</h4>
+                <p class="award-summary">Jan 2021</p>
+                <div id="award6" class="award-details">
+                    <p>Selected for inaugural class of research fellowship to work at Stanford's Computational Policy Lab.</p>
+                </div>
+            </div>
+  
+            <div class="award-card">
+                <div class="award-header" onclick="toggleDetails('award7')">
+                    <h3>SENSA International Social Entrepreneurship Summer Fellowship</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <h4>Haas Center for Public Service</h4>
+                <p class="award-summary">Jun 2020</p>
+                <div id="award7" class="award-details">
+                    <p>Selected by Stanford's Haas Center and SENSA as a fellow to receive a stipend to work for a partner organization.</p>
+                </div>
+            </div>
+  
 
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-  
-        </section>
+        </div>
+          </section>
 
         <section class="left2">
             <h2>Connect With Me!</h2>
@@ -246,29 +330,26 @@
 
       <script type="module" src="/main.js"></script>
       <script>
-        function toggleDetails(jobId) {
-          const jobDetails = document.getElementById(jobId);
-          const jobCard = jobDetails.closest('.job-card');
-          const jobHeader = jobCard.querySelector('.job-header');
-          const chevron = jobHeader.querySelector('i');
-      
-          console.log("Job Details:", jobDetails);
-          console.log("Job Header:", jobHeader);
-          console.log("Chevron:", chevron);
-      
-          if (jobDetails.style.display === "none" || jobDetails.style.display === "") {
-            jobDetails.style.display = "block";
+        function toggleDetails(id) {
+          const details = document.getElementById(id);
+          const card = details.closest('.job-card') || details.closest('.award-card');
+          const header = card.querySelector('.job-header') || card.querySelector('.award-header');
+          const chevron = header.querySelector('i');
+        
+          if (details.style.display === "none" || details.style.display === "") {
+            details.style.display = "block";
             if (chevron) {
               chevron.style.transform = "rotate(180deg)";
             }
           } else {
-            jobDetails.style.display = "none";
+            details.style.display = "none";
             if (chevron) {
               chevron.style.transform = "rotate(0deg)";
             }
           }
         }
-      </script>
+        </script>
+        
       
       
 
