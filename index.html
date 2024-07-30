@@ -324,11 +324,15 @@
           <h5>Thank you for visiting!</h5>
           <h6>By the way, there are lots of easter eggs lying around so feel free to click around and explore if you haven't already!</h6>
         </blockquote>
+
+        <div id="webgl-warning" style="display:none;">
+            <p>Your browser does not support WebGL, or it is disabled.</p>
+          </div>
   
   
       </main>
 
-      <script type="module" src="/main.js"></script>
+      <script type="module" src="src/main.jsx"></script>
       <script>
         function toggleDetails(id) {
           const details = document.getElementById(id);
