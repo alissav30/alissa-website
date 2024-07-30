@@ -77,17 +77,17 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 //Array(100).fill().forEach(addCapsule1);
 
-const paperTexture = new THREE.TextureLoader().load('assets/skyline-13.jpg');
+const paperTexture = new THREE.TextureLoader().load('/assets/skyline-13.jpg');
 scene.background = paperTexture;
 
 // Load skyscraper texture
 //const skyscraperTexture = new THREE.TextureLoader().load('skyscraper-texture-new-5.jpg');
 
 const skyscraperTextures = [
-    new THREE.TextureLoader().load('assets/skyscraper-texture-new-8.jpg'),
-    new THREE.TextureLoader().load('assets/skyscraper-texture-new-5.jpg'),
-    new THREE.TextureLoader().load('assets/skyscraper-texture-3.jpeg'),
-    new THREE.TextureLoader().load('assets/skyscraper-texture-4.jpg'),
+    new THREE.TextureLoader().load('/assets/skyscraper-texture-new-8.jpg'),
+    new THREE.TextureLoader().load('/assets/skyscraper-texture-new-5.jpg'),
+    new THREE.TextureLoader().load('/assets/skyscraper-texture-3.jpeg'),
+    new THREE.TextureLoader().load('/assets/skyscraper-texture-4.jpg'),
 ]
 
 //const billboardTextures = [
@@ -99,17 +99,17 @@ const skyscraperTextures = [
 //];
 
 const videoFiles = [
-    'assets/billboard-gif-1.mp4',
-    'assets/billboard-gif-2.mp4',
-    'assets/billboard-gif-3.mp4',
-    'assets/billboard-gif-4.mp4',
-    'assets/billboard-gif-5.mp4',
-    'assets/billboard-gif-6.mp4',
-    'assets/billboard-gif-7.mp4',
-    'assets/billboard-gif-8.mp4',
-    'assets/billboard-gif-9.mp4',
-    'assets/billboard-gif-10.mp4',
-    'assets/billboard-gif-11.mp4'
+    '/assets/billboard-gif-1.mp4',
+    '/assets/billboard-gif-2.mp4',
+    '/assets/billboard-gif-3.mp4',
+    '/assets/billboard-gif-4.mp4',
+    '/assets/billboard-gif-5.mp4',
+    '/assets/billboard-gif-6.mp4',
+    '/assets/billboard-gif-7.mp4',
+    '/assets/billboard-gif-8.mp4',
+    '/assets/billboard-gif-9.mp4',
+    '/assets/billboard-gif-10.mp4',
+    '/assets/billboard-gif-11.mp4'
 ];
 
 const billboardTextures = videoFiles.map(videoFile => {
@@ -169,7 +169,7 @@ for (let i = 0; i < 60; i++) {
 
 // Load and position Alissa's picture
 
-const alissaTexture = new THREE.TextureLoader().load('assets/alissa-pic-10.png');
+const alissaTexture = new THREE.TextureLoader().load('/assets/alissa-pic-10.png');
 const alissaBillboardGeometry = new THREE.BoxGeometry(21, 21, 21);
 const alissaBillboardMaterial = new THREE.MeshStandardMaterial({ map: alissaTexture});
 const alissaBillboard = new THREE.Mesh(alissaBillboardGeometry, alissaBillboardMaterial);
@@ -207,7 +207,7 @@ rectLight.lookAt(alissaBillboard.position); // Point the light at the Alissa bil
 // Add the RectAreaLight to the scene
 scene.add(rectLight);
 
-const gridTexture = new THREE.TextureLoader().load('assets/neon-grid-texture-1.jpg');
+const gridTexture = new THREE.TextureLoader().load('/assets/neon-grid-texture-1.jpg');
 const gridMaterial = new THREE.MeshBasicMaterial({ map: gridTexture, side: THREE.DoubleSide, transparent: true, opacity: 0.2 });
 const gridGeometry = new THREE.PlaneGeometry(650, 280);
 const gridPlane = new THREE.Mesh(gridGeometry, gridMaterial);
@@ -245,7 +245,7 @@ const rocket = [];
 function loadCarModel() {
     return new Promise((resolve, reject) => {
         loader.load(
-            'assets/new_car_attempt_1.glb', // Replace with the path to your car model
+            '/assets/new_car_attempt_1.glb', // Replace with the path to your car model
             (gltf) => {
                 resolve(gltf.scene);
             },
@@ -296,7 +296,7 @@ const cars = []
 function loadCar2Model() {
     return new Promise((resolve, reject) => {
         loader.load(
-            'assets/car_example_2.gltf', // Replace with the path to your car model
+            '/assets/car_example_2.gltf', // Replace with the path to your car model
             (gltf) => {
                 resolve(gltf.scene);
             },
