@@ -77,17 +77,17 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 //Array(100).fill().forEach(addCapsule1);
 
-const paperTexture = new THREE.TextureLoader().load('skyline-13.jpg');
+const paperTexture = new THREE.TextureLoader().load('assets/skyline-13.jpg');
 scene.background = paperTexture;
 
 // Load skyscraper texture
 //const skyscraperTexture = new THREE.TextureLoader().load('skyscraper-texture-new-5.jpg');
 
 const skyscraperTextures = [
-    new THREE.TextureLoader().load('skyscraper-texture-new-8.jpg'),
-    new THREE.TextureLoader().load('skyscraper-texture-new-5.jpg'),
-    new THREE.TextureLoader().load('skyscraper-texture-3.jpeg'),
-    new THREE.TextureLoader().load('skyscraper-texture-4.jpg'),
+    new THREE.TextureLoader().load('assets/skyscraper-texture-new-8.jpg'),
+    new THREE.TextureLoader().load('assets/skyscraper-texture-new-5.jpg'),
+    new THREE.TextureLoader().load('assets/skyscraper-texture-3.jpeg'),
+    new THREE.TextureLoader().load('assets/skyscraper-texture-4.jpg'),
 ]
 
 //const billboardTextures = [
@@ -99,17 +99,17 @@ const skyscraperTextures = [
 //];
 
 const videoFiles = [
-    'billboard-gif-1.mp4',
-    'billboard-gif-2.mp4',
-    'billboard-gif-3.mp4',
-    'billboard-gif-4.mp4',
-    'billboard-gif-5.mp4',
-    'billboard-gif-6.mp4',
-    'billboard-gif-7.mp4',
-    'billboard-gif-8.mp4',
-    'billboard-gif-9.mp4',
-    'billboard-gif-10.mp4',
-    'billboard-gif-11.mp4'
+    'assets/billboard-gif-1.mp4',
+    'assets/billboard-gif-2.mp4',
+    'assets/billboard-gif-3.mp4',
+    'assets/billboard-gif-4.mp4',
+    'assets/billboard-gif-5.mp4',
+    'assets/billboard-gif-6.mp4',
+    'assets/billboard-gif-7.mp4',
+    'assets/billboard-gif-8.mp4',
+    'assets/billboard-gif-9.mp4',
+    'assets/billboard-gif-10.mp4',
+    'assets/billboard-gif-11.mp4'
 ];
 
 const billboardTextures = videoFiles.map(videoFile => {
@@ -124,7 +124,7 @@ const billboardTextures = videoFiles.map(videoFile => {
 const skyscrapers = [];
 
 function addSkyscraper(x, z) {
-    const skyscraperHeight = Math.random() * 23 + 20; // Random height between 20 and 40
+    const skyscraperHeight = Math.random() * 23 + 20;
     const skyscraperGeometry = new THREE.BoxGeometry(7, skyscraperHeight, 5);
     const randomSkyscraperTexture = skyscraperTextures[Math.floor(Math.random() * skyscraperTextures.length)];
     const skyscraperMaterial = new THREE.MeshStandardMaterial({ map: randomSkyscraperTexture });
@@ -153,7 +153,7 @@ function addSkyscraper(x, z) {
 
 // Add multiple skyscrapers
 const billboards = [];
-for (let i = 0; i < 55; i++) {
+for (let i = 0; i < 60; i++) {
     const x = Math.random() * 240 - 115;
     const z = Math.random() * 140 - 85;
     const billboard = addSkyscraper(x, z);
@@ -169,7 +169,7 @@ for (let i = 0; i < 55; i++) {
 
 // Load and position Alissa's picture
 
-const alissaTexture = new THREE.TextureLoader().load('alissa-pic-10.png');
+const alissaTexture = new THREE.TextureLoader().load('assets/alissa-pic-10.png');
 const alissaBillboardGeometry = new THREE.BoxGeometry(21, 21, 21);
 const alissaBillboardMaterial = new THREE.MeshStandardMaterial({ map: alissaTexture});
 const alissaBillboard = new THREE.Mesh(alissaBillboardGeometry, alissaBillboardMaterial);
@@ -207,11 +207,12 @@ rectLight.lookAt(alissaBillboard.position); // Point the light at the Alissa bil
 // Add the RectAreaLight to the scene
 scene.add(rectLight);
 
-const gridTexture = new THREE.TextureLoader().load('neon-grid-texture-1.jpg');
-const gridMaterial = new THREE.MeshBasicMaterial({ map: gridTexture, side: THREE.DoubleSide, transparent: true, opacity: 0.3 });
-const gridGeometry = new THREE.PlaneGeometry(500, 500);
+const gridTexture = new THREE.TextureLoader().load('assets/neon-grid-texture-1.jpg');
+const gridMaterial = new THREE.MeshBasicMaterial({ map: gridTexture, side: THREE.DoubleSide, transparent: true, opacity: 0.2 });
+const gridGeometry = new THREE.PlaneGeometry(650, 280);
 const gridPlane = new THREE.Mesh(gridGeometry, gridMaterial);
 gridPlane.rotation.x = - Math.PI / 2;
+gridPlane.rotation.y = -0.07;
 gridPlane.position.y = -50;
 scene.add(gridPlane);
 
@@ -244,7 +245,7 @@ const rocket = [];
 function loadCarModel() {
     return new Promise((resolve, reject) => {
         loader.load(
-            'new_car_attempt_1.glb', // Replace with the path to your car model
+            'assets/new_car_attempt_1.glb', // Replace with the path to your car model
             (gltf) => {
                 resolve(gltf.scene);
             },
@@ -295,7 +296,7 @@ const cars = []
 function loadCar2Model() {
     return new Promise((resolve, reject) => {
         loader.load(
-            'car_example_2.gltf', // Replace with the path to your car model
+            'assets/car_example_2.gltf', // Replace with the path to your car model
             (gltf) => {
                 resolve(gltf.scene);
             },
@@ -322,14 +323,14 @@ async function addCar2(x, y, z) {
 }
 
 //addCar2(-40, -24, 50);
-addCar2(-160, 62, -200);
+addCar2(-174, 59, -200);
 
 function moveCarOnScroll() {
     const t = document.body.getBoundingClientRect().top;
     const car = cars[0];
     if (car) {
-        car.position.y = camera.position.y + 65; // Adjust speed and direction as needed
-        car.position.x = camera.position.x - 150 + t * -0.095; // Adjust as needed to keep the car in frame on the right side
+        car.position.y = camera.position.y + 64; // Adjust speed and direction as needed
+        car.position.x = camera.position.x - 164 + t * -0.085; // Adjust as needed to keep the car in frame on the right side
         car.position.z = camera.position.z - 230 + t * 0.0095; // Adjust as needed to keep the car in frame
     }
 }
