@@ -210,13 +210,13 @@ carPointLight.position.set(30, -20, -20);
 // Function to animate the rocket
 let rocketAngle = 0;
 function animateRocket() {
-    const radius = 85;
-    const speed = 0.025;
+    const radius = 90;
+    const speed = 0.029;
     rocketAngle += speed;
     rocket.forEach(car => {
         car.position.x = radius * Math.cos(rocketAngle);
         car.position.z = -2 * radius * Math.sin(rocketAngle);
-        car.position.y = 30 + 12 * Math.sin(rocketAngle * 2); 
+        car.position.y = 30 + 12 * 5 * Math.sin(rocketAngle); 
     });
 }
 
@@ -318,8 +318,10 @@ function moveCamera() {
     alissaBillboard.rotation.y += 0.025;
     alissaBillboard.rotation.z += 0.015;
     alissaBillboard.position.z -= scrollDelta * 0.004;
-    alissaBillboard.position.y += scrollDelta * 0.0016;
-    alissaBillboard.position.x += scrollDelta * 0.0087;
+    //alissaBillboard.position.y += scrollDelta * 0.0016;
+    alissaBillboard.position.y += scrollDelta * 0.0012;
+
+    alissaBillboard.position.x += scrollDelta * 0.0088;
 
 
     camera.position.z = 30 + t * -0.0095;
