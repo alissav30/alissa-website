@@ -9,7 +9,7 @@ canvas {
   /*--dark-bg: rgba(15, 15, 15, 0.95);*/
   --dark-bg: rgba(34, 34, 34, 0.9);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  --spacing: 410px;
+  --spacing: 380px;
   font-family: brandon-grotesque, sans-serif;
   font-weight: 200;
   font-style: normal;
@@ -19,7 +19,7 @@ canvas {
 
 li {
     font-family: 'Bitter', sans-serif;
-    font-size: 26px;
+    font-size: 22px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
@@ -40,7 +40,7 @@ main {
 h2 {
   /*font-family: elevon, sans-serif;*/
   /*font-weight: 700;*/
-  font-size: 72px;
+  font-size: 64px;
   margin-bottom: 4px;
   margin-top: 2px;
   font-style: normal;
@@ -62,17 +62,17 @@ h3 {
 h1 {
     font-family: elevon, sans-serif;
     font-weight: 700;
-    font-size: 150px;
+    font-size: 120px;
     font-style: normal;
     font-family: 'Shadows Into Light', sans-serif;
-    margin-top: 5px;
+    margin-top: 3px;
     margin-bottom: 6px;
 }
 
 h4 {
     font-family: 'Caveat', sans-serif;
     font-weight: 800;
-    font-size: 55px;
+    font-size: 50px;
     margin-top: 15px;
     margin-bottom: 6px;
 }
@@ -157,9 +157,21 @@ canvas {
     /*background-color: rgba(255, 255, 255, 0.8);*/
     background-color: rgba(34, 34, 34, 0.6);
     /*background-color: white;*/
-    font-size: 3.5rem;
+    font-size: 3.4rem;
     display: inline;
     line-height: 1.28;
+    padding-left: 10px;
+    padding-right: 15px;
+  }
+
+  blockquote h4 {
+    color: white;
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+    background-color: rgba(34, 34, 34, 0.6);
+    /*background-color: white;*/
+    font-size: 2.4rem;
+    display: inline;
+    line-height: 1.263;
     padding-left: 10px;
     padding-right: 15px;
   }
@@ -170,8 +182,11 @@ canvas {
 
   .left2 {
     grid-column: 7 / 12;
-    margin-right: 15px;
-    margin-left: 240px;
+    /*margin-right: 110px;
+    padding-right: 20px;*/
+    padding-left: 40px;
+    margin-left: 110px;
+
   }
 
   /* these are the styles for the project divs and modal */
@@ -187,7 +202,7 @@ canvas {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
     color: white;
     border-radius: 10px;
-    font-size: 28px;
+    font-size: 25px;
     text-align: left;
     font-family: 'Bitter', sans-serif;
     transition: background-color 0.3s, transform 0.3s;
@@ -207,22 +222,22 @@ canvas {
   }
 
   .giving-tree-logo {
-    width: 326px;
-    height: 58px;
-    padding-top: 1px;
-    padding-bottom: 1px;
+    width: 300px;
+    height: 50px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     margin-right: 25px;
     border-radius: 5px;
   }
 
   .courtesy-logo {
-    width: 306px;
-    height: 58px;
-    padding-top: 1px;
-    padding-bottom: 1px;
+    width: 270px;
+    height: 50px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     margin-right: 25px;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
     border-radius: 5px;
   }
 
@@ -234,7 +249,7 @@ canvas {
   
   .project-info p {
     margin: 5px 0 0;
-    font-size: 22px;
+    font-size: 18px;
     font-family: 'Bitter', sans-serif;
   }
   
@@ -301,19 +316,32 @@ canvas {
     transition: background-color 0.3s;
 }
 
+.link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .link-item {
+    display: flex;
+    align-items: center;
+    margin: 16px 0;
+}
+
+/*.link-item {
     margin: 23px 12px;
     text-align: left;
-}
+}*/
 
 .link-item a {
     display: flex;
     align-items: center;
     color: white;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 20px;
     margin-bottom: 4px;
+    letter-spacing: 0.1rem;
     margin-top: 2px;
     font-style: normal;
     font-family: 'Bitter', sans-serif;
@@ -356,7 +384,7 @@ canvas {
   }
   
   .job-header i {
-    font-size: 28px;
+    font-size: 25px;
     transition: transform 0.3s;
   }
   
@@ -366,12 +394,13 @@ canvas {
   
   .job-card h4 {
     font-family: 'Shadows Into Light', sans-serif;
-    font-size: 26px;
+    font-size: 19px;
     margin: 0 0 10px 0;
+    letter-spacing: .08rem;
   }
 
   .job-card h3 {
-    font-size: 40px;
+    font-size: 25px;
     margin-bottom: 4px;
     margin-top: 2px;
     font-style: normal;
@@ -381,7 +410,7 @@ canvas {
   
   .job-card p {
     font-family: 'Bitter', sans-serif;
-    font-size: 18px;
+    font-size: 13px;
     margin: 5px 0;
   }
   
@@ -428,7 +457,8 @@ canvas {
   }
   
   .award-header i {
-    font-size: 20px;
+    font-size: 15px;
+    margin-left: 5px;
     transition: transform 0.3s;
   }
   
@@ -438,12 +468,13 @@ canvas {
   
   .award-card h4 {
     font-family: 'Shadows Into Light', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
+    letter-spacing: 0.09rem;
     margin: 0 0 10px 0;
   }
   
   .award-card h3 {
-    font-size: 24px;
+    font-size: 17px;
     margin-bottom: 4px;
     font-family: 'Bitter', sans-serif;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
@@ -451,7 +482,7 @@ canvas {
   
   .award-card p {
     font-family: 'Bitter', sans-serif;
-    font-size: 16px;
+    font-size: 13px;
     margin: 5px 0;
   }
   

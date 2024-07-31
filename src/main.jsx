@@ -6,12 +6,6 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-const scene = new THREE.Scene(); // container
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-const canvas = document.querySelector('#bg');
-const webglWarning = document.getElementById('webgl-warning');
-
 function webglAvailable() {
     try {
       const canvas = document.createElement('canvas');
@@ -87,15 +81,15 @@ const skyscrapers = [];
 
 function addSkyscraper(x, z) {
     const skyscraperHeight = Math.random() * 23 + 20;
-    const skyscraperGeometry = new THREE.BoxGeometry(7, skyscraperHeight, 5);
+    const skyscraperGeometry = new THREE.BoxGeometry(8, skyscraperHeight, 5);
     const randomSkyscraperTexture = skyscraperTextures[Math.floor(Math.random() * skyscraperTextures.length)];
     const skyscraperMaterial = new THREE.MeshStandardMaterial({ map: randomSkyscraperTexture });
     const skyscraper = new THREE.Mesh(skyscraperGeometry, skyscraperMaterial);
-    skyscraper.position.set(x, skyscraperHeight / 2 - 45, z); // Adjust position based on height
+    skyscraper.position.set(x, skyscraperHeight / 2 - 53, z); // Adjust position based on height
     scene.add(skyscraper);
 
     // Billboard
-    const billboardGeometry = new THREE.PlaneGeometry(9, 6.5);
+    const billboardGeometry = new THREE.PlaneGeometry(10, 7);
     const randomTexture = billboardTextures[Math.floor(Math.random() * billboardTextures.length)];
     const billboardMaterial = new THREE.MeshStandardMaterial({ map: randomTexture, transparent: true });
     const billboard = new THREE.Mesh(billboardGeometry, billboardMaterial);
@@ -115,8 +109,8 @@ function addSkyscraper(x, z) {
 
 // Add multiple skyscrapers
 const billboards = [];
-for (let i = 0; i < 60; i++) {
-    const x = Math.random() * 240 - 115;
+for (let i = 0; i < 50; i++) {
+    const x = Math.random() * 255 - 120;
     const z = Math.random() * 140 - 85;
     const billboard = addSkyscraper(x, z);
     billboards.push(billboard);
@@ -258,14 +252,14 @@ async function addCar2(x, y, z) {
 }
 
 //addCar2(-40, -24, 50);
-addCar2(-174, 59, -200);
+addCar2(-180, 59, -200);
 
 function moveCarOnScroll() {
     const t = document.body.getBoundingClientRect().top;
     const car = cars[0];
     if (car) {
         car.position.y = camera.position.y + 64; // Adjust speed and direction as needed
-        car.position.x = camera.position.x - 164 + t * -0.085; // Adjust as needed to keep the car in frame on the right side
+        car.position.x = camera.position.x - 170 + t * -0.082; // Adjust as needed to keep the car in frame on the right side
         car.position.z = camera.position.z - 230 + t * 0.0095; // Adjust as needed to keep the car in frame
     }
 }
@@ -287,16 +281,40 @@ setInterval(changeBillboardTexture, 3000);
 
 let prevScrollY = window.scrollY;
 
+let isAtBottom = false;
+
+    function isPageAtBottom() {
+        const atBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 1); // Using a small offset to avoid floating point issues
+        console.log('Window innerHeight:', window.innerHeight);
+        console.log('Window scrollY:', window.scrollY);
+        console.log('Document documentElement scrollHeight:', document.documentElement.scrollHeight);
+        console.log('Is at bottom:', atBottom);
+        return atBottom;
+    }
+
+//function rotateBillboardOnScroll(deltaY) {
+//    // Scroll-triggered rotation
+//    alissaBillboard.rotation.x -= 0.017;
+//    alissaBillboard.rotation.y += 0.037;
+//    alissaBillboard.rotation.z += 0.017;
+//}
+
 function moveCamera() {
     const t = document.body.getBoundingClientRect().top;
     const scrollDelta = window.scrollY - prevScrollY;
 
-    alissaBillboard.rotation.x -= 0.017;
-    alissaBillboard.rotation.y += 0.037;
-    alissaBillboard.rotation.z += 0.017;
-    alissaBillboard.position.z -= scrollDelta * 0.004;
-    alissaBillboard.position.y += scrollDelta * 0.0018;
-    alissaBillboard.position.x += scrollDelta * 0.0082;
+    if (isPageAtBottom()) {
+        isAtBottom = true;
+    } else {
+        isAtBottom = false;
+        // Scroll-triggered rotation
+        alissaBillboard.rotation.x -= 0.017;
+        alissaBillboard.rotation.y += 0.037;
+        alissaBillboard.rotation.z += 0.017;
+        alissaBillboard.position.z -= scrollDelta * 0.004;
+        alissaBillboard.position.y += scrollDelta * 0.0016;
+        alissaBillboard.position.x += scrollDelta * 0.0087;
+    }
 
 
     camera.position.z = 30 + t * -0.0095;
@@ -308,8 +326,8 @@ function moveCamera() {
     //    skyscraper.position.z = skyscraper.position.z + t * 0.00002; // Adjust the multiplier as needed
     //});
     skyscrapers.forEach(skyscraper => {
-        skyscraper.position.y += scrollDelta * -0.0025; // Adjust the multiplier as needed
-        skyscraper.position.z += scrollDelta * -0.0025; // Adjust the multiplier as needed
+        skyscraper.position.y += scrollDelta * -0.001; // Adjust the multiplier as needed
+        skyscraper.position.z += scrollDelta * -0.0018; // Adjust the multiplier as needed
     });
 
     prevScrollY = window.scrollY;
@@ -318,12 +336,26 @@ function moveCamera() {
     moveCarOnScroll();
 }
 document.body.onscroll = moveCamera
-moveCamera()
+
+moveCamera(); // Initial call to moveCamera after the document is fully loaded
+
+function handleWheel(event) {
+    rotateBillboardOnScroll(event.deltaY);
+}
+
+document.body.onwheel = handleWheel;
 
 function animate() {
     requestAnimationFrame(animate);
 
     animateRocket(); 
+
+    if (isAtBottom) {
+        // Continuous rotation at the bottom
+        alissaBillboard.rotation.x -= 0.005;
+        alissaBillboard.rotation.y += 0.01;
+        alissaBillboard.rotation.z += 0.005;
+    }
 
     controls.update();
 
