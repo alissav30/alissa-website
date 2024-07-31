@@ -211,12 +211,12 @@ carPointLight.position.set(30, -20, -20);
 let rocketAngle = 0;
 function animateRocket() {
     const radius = 90;
-    const speed = 0.029;
+    const speed = 0.0295;
     rocketAngle += speed;
     rocket.forEach(car => {
         car.position.x = radius * Math.cos(rocketAngle);
         car.position.z = -2 * radius * Math.sin(rocketAngle);
-        car.position.y = 30 + 12 * 5 * Math.sin(rocketAngle); 
+        car.position.y = 30 + 12 * 4.4 * Math.sin(rocketAngle); 
     });
 }
 
