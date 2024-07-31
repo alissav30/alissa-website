@@ -117,12 +117,12 @@ for (let i = 0; i < 50; i++) {
 }
 
 // Load and position Alissa's picture
-const alissaTexture = new THREE.TextureLoader().load('/assets/alissa-pic-10.png');
+const alissaTexture = new THREE.TextureLoader().load('/assets/alissa-pic-10.jpg');
 const alissaBillboardGeometry = new THREE.BoxGeometry(21, 21, 21);
 const alissaBillboardMaterial = new THREE.MeshStandardMaterial({ map: alissaTexture});
 const alissaBillboard = new THREE.Mesh(alissaBillboardGeometry, alissaBillboardMaterial);
 alissaBillboard.position.set(10.5, 2.5, 8);
-alissaBillboard.rotation.set(0.45, -0.5, -0.05);
+alissaBillboard.rotation.set(0.35, -0.55, -0.15);
 scene.add(alissaBillboard);
 
 // Create neon edge
@@ -133,7 +133,7 @@ alissaBillboard.add(neonEdges);
 
 // Add a RectAreaLight to illuminate the Alissa billboard
 const rectLight = new THREE.RectAreaLight(0xffffff, 0.6, 70, 70); // Color, intensity, width, height
-rectLight.position.set(30, 13, 40); // Position the light
+rectLight.position.set(10.5, 8, 40); // Position the light
 rectLight.lookAt(alissaBillboard.position); // Point the light at the Alissa billboard
 
 // Add the RectAreaLight to the scene
@@ -282,6 +282,7 @@ setInterval(changeBillboardTexture, 3000);
 let prevScrollY = window.scrollY;
 
 let isAtBottom = false;
+let isAtTop = true;
 
     function isPageAtBottom() {
         const atBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 1); // Using a small offset to avoid floating point issues
@@ -292,29 +293,33 @@ let isAtBottom = false;
         return atBottom;
     }
 
-//function rotateBillboardOnScroll(deltaY) {
-//    // Scroll-triggered rotation
-//    alissaBillboard.rotation.x -= 0.017;
-//    alissaBillboard.rotation.y += 0.037;
-//    alissaBillboard.rotation.z += 0.017;
-//}
+    function isPageAtTop() {
+        const atTop = window.scrollY === 0;
+        console.log('Is at top:', atTop);
+        return atTop;
+    }
+
+function rotateBillboardOnScroll(deltaY) {
+    // Scroll-triggered rotation
+    alissaBillboard.rotation.x -= 0.017;
+    alissaBillboard.rotation.y += 0.037;
+    alissaBillboard.rotation.z += 0.017;
+}
 
 function moveCamera() {
     const t = document.body.getBoundingClientRect().top;
     const scrollDelta = window.scrollY - prevScrollY;
 
-    if (isPageAtBottom()) {
-        isAtBottom = true;
-    } else {
-        isAtBottom = false;
-        // Scroll-triggered rotation
-        alissaBillboard.rotation.x -= 0.017;
-        alissaBillboard.rotation.y += 0.037;
-        alissaBillboard.rotation.z += 0.017;
-        alissaBillboard.position.z -= scrollDelta * 0.004;
-        alissaBillboard.position.y += scrollDelta * 0.0016;
-        alissaBillboard.position.x += scrollDelta * 0.0087;
-    }
+    isAtBottom = isPageAtBottom();
+    isAtTop = isPageAtTop();
+
+    // Scroll-triggered rotation
+    alissaBillboard.rotation.x -= 0.015;
+    alissaBillboard.rotation.y += 0.025;
+    alissaBillboard.rotation.z += 0.015;
+    alissaBillboard.position.z -= scrollDelta * 0.004;
+    alissaBillboard.position.y += scrollDelta * 0.0016;
+    alissaBillboard.position.x += scrollDelta * 0.0087;
 
 
     camera.position.z = 30 + t * -0.0095;
@@ -352,9 +357,9 @@ function animate() {
 
     if (isAtBottom) {
         // Continuous rotation at the bottom
-        alissaBillboard.rotation.x -= 0.005;
-        alissaBillboard.rotation.y += 0.01;
-        alissaBillboard.rotation.z += 0.005;
+        alissaBillboard.rotation.x -= 0.023;
+        alissaBillboard.rotation.y += 0.023;
+        alissaBillboard.rotation.z += 0.023;
     }
 
     controls.update();
