@@ -172,7 +172,7 @@ canvas {
     font-size: 2.4rem;
     display: inline;
     line-height: 1.263;
-    padding-left: 10px;
+    padding-left: 15px;
     padding-right: 15px;
   }
 
@@ -184,7 +184,7 @@ canvas {
     grid-column: 7 / 12;
     /*margin-right: 110px;
     padding-right: 20px;*/
-    padding-left: 45px;
+    padding-left: 40px;
     margin-left: 195px;
 
   }
@@ -241,6 +241,26 @@ canvas {
     border-radius: 5px;
   }
 
+  .counsel-compass-logo {
+    width: 250px;
+    height: 82px;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-right: 25px;
+    border-radius: 5px;
+  }
+
+  .divert-logo {
+    width: 325px;
+    height: 110px;
+    margin-right: 25px;
+    padding-right: 75px;
+    padding-left: 55px;
+    border-radius: 5px;
+  }
+
   .project-info h3 {
     margin: 0;
     font-size: 28px;
@@ -257,6 +277,52 @@ canvas {
   .project-info.logo-with-name h3 {
     display: none; /* Hide name if it's part of the logo */
   }
+
+  .project.no-logo .project-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .project.logo-no-name .project-logo-no-name {
+    width: 95px;
+    height: 95px;
+    margin-right: 34px;
+  }
+  
+  .project.logo-no-name .project-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .project.logo-no-name .project-info h3 {
+    margin: 0 10px;
+    letter-spacing: 0.1rem;
+    font-size: 36px;
+    font-family: 'Shadows Into Light', sans-serif;
+    margin-right: 66px;
+  }
+  
+  .project.no-logo h3 {
+    font-size: 60px;
+    letter-spacing: 0.15rem;
+    margin-left: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 50px;
+    padding-left: 50px;
+    padding-right: 52px;
+    font-family: 'Shadows Into Light', sans-serif;
+  }
+  
+  .project.no-logo .project-info p {
+    font-size: 18px;
+    font-family: 'Bitter', sans-serif;
+  }
+  
+  .project-info h3, .project-info p {
+    margin: 5px 0;
+  }  
   
   .modal {
     display: none;
@@ -279,11 +345,11 @@ canvas {
 .modal-content {
     background-color: #333;
     color: white;
-    margin: 10% auto;
+    margin: 4% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 500px;
+    max-width: 480px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transform: scale(0.7);
@@ -321,7 +387,7 @@ canvas {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-right: 28px;
+    margin-right: 35px;
 }
 
 .link-item {
@@ -361,6 +427,58 @@ canvas {
 
 .link-item a:hover i {
     color: #e8a0be; /* Adjust icon color to match your theme */
+}
+
+.modal .modal-content .link-container {
+    display: flex;
+    flex-direction: column; /* Change this line */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal .modal-content .link-item {
+    display: flex;
+    align-items: center;
+    margin: 14px 0;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(34, 34, 34, 0.9);
+    font-size: 18px;
+}
+
+.modal .modal-content a {
+    font-size: 24px;
+}
+
+.modal .modal-content p {
+    font-family: 'Bitter', sans-serif;
+    font-size: 17px;
+    margin-top: 18px;
+    margin-bottom: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    line-height: 1.5rem;
+}
+
+.credentials-link {
+    margin-left: 10px; /* Adjust margin as needed */
+  }
+
+
+.credentials-link h7 {
+    margin: 5px 0;
+    font-size: 18px;
+    font-family: 'Shadows Into Light', sans-serif;
+    color: white;
+    letter-spacing: 0.12rem;
+    /*font-weight: bold;*/
+}
+
+.link-item-container {
+    display: flex;
+    flex-direction: row; /* Add this class for horizontal alignment */
+    align-items: center;
+    gap: 20px; /* Add gap for spacing */
 }
 
 .job-card {
@@ -499,3 +617,8 @@ canvas {
     color: #ccc;
   }
   
+  .quote-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+    cursor: pointer;
+}

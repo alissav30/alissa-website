@@ -35,7 +35,7 @@
                 <li>I'm a Stanford grad with my M.S. in Computer Science (on the Human Computer Interaction Track) and my B.A. in Political Science.</li>
                 <li>I'm half-Ethiopian and half-French and was born in Addis Abeba, Ethiopia.</li>
                 <li>I'm passionate about the intersection of technology, policy, and social impact.</li>
-                <li>I'm a web developer, designer, data scientist, and product manager excited to work on technical social impact projects in spheres like access to justice, education, housing, etc.</li>
+                <li>I'm a web developer, designer, product manager, and data scientist excited to work on end-to-end technical social impact projects in spheres like access to justice, education, housing, etc.</li>
                 <li>In my free time, I enjoy playing rugby, creating digital art, writing slam poetry, and curating music.</li>
             </ul>
       
@@ -50,16 +50,37 @@
               <p>Facilitating making and managing high-impact donations.</p>
             </div>
           </div>
-          <div class="project" onclick="openModal('project2')">Relative Refresh</div>
+          <div class="project logo-no-name" onclick="openModal('project2')">
+            <img src="/assets/relative-refresh-logo.png" alt="Relative Refresh Logo" class="project-logo-no-name">
+            <div class="project-info">
+              <h3>Relative Refresh</h3>
+              <p>Connects upcyclers with waste suppliers Project in partnership with Albert Einstein Hospital in São Paulo.</p>
+            </div>
+          </div>
           <div class="project" onclick="openModal('project3')">
             <img src="/assets/courtesy-logo-3.png" alt="Courtesy Logo" class="courtesy-logo">
             <div class="project-info logo-with-name">
               <p>Provides a way for defendants to track and confirm their court logistics.</p>
             </div>
           </div>
-          <div class="project" onclick="openModal('project4')">Crinkle</div>
-          <div class="project" onclick="openModal('project5')">Counsel Compass</div>
-          <div class="project" onclick="openModal('project6')">Divert</div>
+          <div class="project no-logo" onclick="openModal('project4')">
+            <h3>Crinkle</h3>
+            <div class="project-info">
+              <p>An audio player for the NYT to make their journalism more accessible.</p>
+            </div>
+          </div>        
+          <div class="project" onclick="openModal('project5')"> 
+            <img src="/assets/counsel-compass-logo.png" alt="Counsel Compass Logo" class="counsel-compass-logo">
+            <div class="project-info logo-with-name">
+              <p>Connects domestic violence survivors with lawyers willing to work pro-bono or sliding scale.</p>
+            </div>
+          </div>
+          <div class="project" onclick="openModal('project6')">
+            <img src="/assets/divert_logo.png" alt="Divert Logo" class="divert-logo">
+            <div class="project-info logo-with-name">
+              <p>Seeks to reduce doomscrolling through gradual visual and audio distortion.</p>
+            </div>
+          </div>    
         </section>
 
         <section class="left">
@@ -177,12 +198,15 @@
         </section>
 
 
-          <blockquote>
-            <h4>&nbsp;I'm satisfied with life&nbsp;
-                <br>&nbsp;I do not just get by, I thrive&nbsp;
-                <br>&nbsp;What a miracle to be up and alive&nbsp;
-                <br>&nbsp;Sending love to those who are stuck in the fight&nbsp;
-                <br>&nbsp;-Jhene Aiko in calm & patient</h5>
+        <blockquote>
+            <a href="https://open.spotify.com/playlist/0cXpXqISjDqoTgG4nuVi3V" target="_blank" class="quote-link">
+              <h4>&nbsp;I'm satisfied with life&nbsp;
+                  <br>&nbsp;I do not just get by, I thrive&nbsp;
+                  <br>&nbsp;What a miracle to be up and alive&nbsp;
+                  <br>&nbsp;Sending love to those who are stuck in the fight&nbsp;
+                  <br>&nbsp;-Jhene Aiko in "calm & patient"
+              </h4>
+            </a>
           </blockquote>
 
           <section class="light">
@@ -197,7 +221,7 @@
                 <h4>Stanford CS</h4>
                 <p class="award-summary">Mar 2024</p>
                 <div id="award1" class="award-details">
-                    <p>Earned the Social Impact Award for The Giving Tree in CS194H (March 2024).</p>
+                    <p>Earned the Social Impact Award for The Giving Tree in CS194H.</p>
                 </div>
             </div>
   
@@ -220,7 +244,7 @@
                 <h4>Stanford CS</h4>
                 <p class="award-summary">Mar 2022</p>
                 <div id="award3" class="award-details">
-                    <p>Earned the Personal Impact Award for courtesy in CS147 (March 2022).</p>
+                    <p>Earned the Personal Impact Award for courtesy in CS147.</p>
                 </div>
             </div>
   
@@ -327,7 +351,7 @@
   
         <blockquote>
           <h5>Thank you for visiting!</h5>
-          <h6>By the way, there are lots of easter eggs lying around so feel free to click around and explore if you haven't already!</h6>
+          <h6>By the way, there are some easter eggs lying around so feel free to click around and explore if you haven't already!</h6>
         </blockquote>
   
   
@@ -355,55 +379,99 @@
         }
         </script>
         
-      
-      
-
-    <div id="project1" class="modal">
-        <div class="modal-content">
-        <span class="close" onclick="closeModal('project1')">&times;</span>
-        <h2>The Giving Tree</h2>
-        <p>Details about Project 1...</p>
+        <div id="project1" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('project1')">&times;</span>
+                <h2>The Giving Tree</h2>
+                <p>Provides users with a platform for charitable giving, offering a range of features to simplify the donation process and enhance user engagement. 
+                    Users can easily search and find high-impact nonprofits, set up recurring donations to their preferred organizations, and track their donation history over time. 
+                    Additionally, the app features an incentive system where users can unlock and collect tree characters as they complete more donations, providing a gamified experience to encourage regular giving. 
+                    Furthermore, users can generate auto-filled tax forms directly within the app, streamlining the process for tax filing purposes.</p>
+                <div class="link-container">
+                    <div class="link-item"><a href="https://web.stanford.edu/class/cs194h/projects/TheGivingTree/" target="_blank">View Project</a></div>
+                    <div class="link-item"><a href="https://github.com/alissav30/the-giving-tree" target="_blank">View Code</a></div>
+                </div>
+            </div>
         </div>
-    </div>
-    
-    <div id="project2" class="modal">
-        <div class="modal-content">
-        <span class="close" onclick="closeModal('project2')">&times;</span>
-        <h2>Relative Refresh</h2>
-        <p>Details about Project 2...</p>
+        
+        <div id="project2" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('project2')">&times;</span>
+                <h2>Relative Refresh</h2>
+                <p>Built platform in partnership with the Albert Einstein Hospital in São Paulo, Brazil. 
+                    Project connects upcyclers with waste suppliers in order to expand their ecosystem and the reach of the socioeconomic and environmental benefits. 
+                    Also creates personalized QR code flows for each company's products to help tell the story of upcyclers.</p>
+                <div class="link-container">
+                    <div class="link-item-container">
+                        <div class="link-item"><a href="https://relative-refresh.vercel.app" target="_blank">View Project</a></div>
+                        <div class="credentials-link">
+                            <h7><strong>Username:</strong> orientavida</h7>
+                            <h7><strong><br>Password:</strong> obrigado</h7>
+                        </div>
+                    </div>
+                    <div class="link-item"><a href="https://gitfront.io/r/alissav30/MwHZbRZiyT3W/Relative-Refresh/" target="_blank">View Code</a></div>
+                </div>
+            </div>
         </div>
-    </div>
-    
-    <div id="project3" class="modal">
-        <div class="modal-content">
-        <span class="close" onclick="closeModal('project3')">&times;</span>
-        <h2>Courtesy</h2>
-        <p>Details about Project 3...</p>
+        
+        <div id="project3" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('project3')">&times;</span>
+                <h2>Courtesy</h2>
+                <p>Being summoned to court can be a stressful and overwhelming process, especially when combined with a lack of resources and information. The consequences of failing to appear in court when summoned are disruptive, ranging from a fine to an arrest.
+                    courtesy provides defendants with ways to track and confirm the logistics of their court dates (e.g. arranging transportation, legal representation, and more) to help people feel more confident leading up to their court hearing.
+                    </p>
+                <div class="link-container">
+                    <div class="link-item"><a href="https://hci.stanford.edu/courses/cs147/2022/wi/projects/SystemicJusticeAndEquity/courtesy/" target="_blank">View Project</a></div>
+                    <div class="link-item"><a href="https://github.com/alissav30/courtesy" target="_blank">View Code</a></div>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div id="project4" class="modal">
-        <div class="modal-content">
-        <span class="close" onclick="closeModal('project4')">&times;</span>
-        <h2>Crinkle</h2>
-        <p>Details about Project 3...</p>
+        
+        <div id="project4" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('project4')">&times;</span>
+                <h2>Crinkle</h2>
+                <p>During the New York Times (NYT) Maker Week Hackathon, my team and I were on a mission to make the NYT's journalism more accessible to all, in response to complaints about the site's incompatibility with screen readers.
+                    We built an audio player for all of the NYT’s articles to particularly increase access for those with visual and cognitive impairments.
+                    We ended up winning the Most Accessible Award out of all of the projects.
+                </p>
+                <div class="link-container">
+                    <div class="link-item"><a href="https://drive.google.com/file/d/19u1hpeZRdRfnt9bjsPHW_ybaetfH8jt4/view" target="_blank">View Presentation</a></div>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div id="project5" class="modal">
-        <div class="modal-content">
-        <span class="close" onclick="closeModal('project5')">&times;</span>
-        <h2>Counsel Compass</h2>
-        <p>Details about Project 3...</p>
+        
+        <div id="project5" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('project5')">&times;</span>
+                <h2>Counsel Compass</h2>
+                <p>Worked for nonprofit FreeFrom on platform to help survivors of domestic violence gain financial independence from their abusers.
+                    Conducted extensive user research with survivors, lawyers, nonprofit organization, and other affected parties before arriving at a solution. 
+                    Built webapp to connect survivors with lawyers who are willing to work pro-bono, sliding scale, or on contingency agreements.
+                </p>
+                <div class="link-container">
+                    <div class="link-item"><a href="https://docs.google.com/presentation/d/1HmLDLidHF2lx37CKKuCnrGSJhmqqaHra4o5e5-Mhsgc/edit#slide=id.p" target="_blank">View Project</a></div>
+                    <div class="link-item"><a href="https://github.com/cs52-stanford/freefrom" target="_blank">View Code</a></div>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div id="project6" class="modal">
-        <div class="modal-content">
-        <span class="close" onclick="closeModal('project6')">&times;</span>
-        <h2>Divert</h2>
-        <p>Details about Project 3...</p>
+        
+        <div id="project6" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('project6')">&times;</span>
+                <h2>Divert</h2>
+                <p>Seeks to reduce doomscrolling through gradual visual and audio distortion. 
+                    Many students struggle with seemingly endless doom scrolling sessions on addictive apps like TikTok and Instagram.  
+                    While companies like Apple enable phone users to attempt to reduce this time by locking apps after a set time period, these settings are easily overridden. 
+                    Divert instead gradually decreases the attractiveness of the screen and targets specific applications that cause users issues. 
+                    In our research, we found that visual distortions such as grayscale can assist in this problem, and Divert integrates multiple features to discourage users from continual phone usage.
+                </p>
+                <div class="link-container">
+                    <div class="link-item"><a href="https://docs.google.com/document/d/1tpGE4qNGJxQSV_zbeiZQsU-48ZpxBvjPle8i094kX8M/edit" target="_blank">View Project</a></div>
+                </div>
+            </div>
         </div>
-    </div>
+        
   </body>
 </html>

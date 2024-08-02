@@ -121,8 +121,8 @@ const alissaTexture = new THREE.TextureLoader().load('/assets/alissa-pic-10.jpg'
 const alissaBillboardGeometry = new THREE.BoxGeometry(21, 21, 21);
 const alissaBillboardMaterial = new THREE.MeshStandardMaterial({ map: alissaTexture});
 const alissaBillboard = new THREE.Mesh(alissaBillboardGeometry, alissaBillboardMaterial);
-alissaBillboard.position.set(10.5, 2.5, 8);
-alissaBillboard.rotation.set(0.35, -0.55, -0.15);
+alissaBillboard.position.set(10.5, 2.1, 8);
+alissaBillboard.rotation.set(0.38, -0.5, -0.12);
 scene.add(alissaBillboard);
 
 // Create neon edge
@@ -130,6 +130,10 @@ const edges = new THREE.EdgesGeometry(alissaBillboardGeometry);
 const neonMaterial = new THREE.LineBasicMaterial({ color: 0xe8a0be, linewidth: 5 });
 const neonEdges = new THREE.LineSegments(edges, neonMaterial);
 alissaBillboard.add(neonEdges);
+
+// Save the initial position and rotation of the Alissa billboard
+const initialPosition = alissaBillboard.position.clone();
+const initialRotation = alissaBillboard.rotation.clone();
 
 // Add a RectAreaLight to illuminate the Alissa billboard
 const rectLight = new THREE.RectAreaLight(0xffffff, 0.6, 70, 70); // Color, intensity, width, height
@@ -259,7 +263,7 @@ function moveCarOnScroll() {
     const car = cars[0];
     if (car) {
         car.position.y = camera.position.y + 64; // Adjust speed and direction as needed
-        car.position.x = camera.position.x - 170 + t * -0.082; // Adjust as needed to keep the car in frame on the right side
+        car.position.x = camera.position.x - 170 + t * -0.081; // Adjust as needed to keep the car in frame on the right side
         car.position.z = camera.position.z - 230 + t * 0.0095; // Adjust as needed to keep the car in frame
     }
 }
@@ -283,6 +287,9 @@ let prevScrollY = window.scrollY;
 
 let isAtBottom = false;
 let isAtTop = true;
+let isInitialPosition = true;
+let initialPositionTimeout;
+
 
     function isPageAtBottom() {
         const atBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 1); // Using a small offset to avoid floating point issues
@@ -300,11 +307,13 @@ let isAtTop = true;
     }
 
 function rotateBillboardOnScroll(deltaY) {
-    // Scroll-triggered rotation
-    alissaBillboard.rotation.x -= 0.017;
-    alissaBillboard.rotation.y += 0.037;
-    alissaBillboard.rotation.z += 0.017;
+    if (!isInitialPosition) {  // Add this check
+        alissaBillboard.rotation.x += 0.042;
+        alissaBillboard.rotation.y += 0.035;
+        alissaBillboard.rotation.z += 0.035;
+    }
 }
+
 
 function moveCamera() {
     const t = document.body.getBoundingClientRect().top;
@@ -314,9 +323,13 @@ function moveCamera() {
     isAtTop = isPageAtTop();
 
     // Scroll-triggered rotation
-    alissaBillboard.rotation.x -= 0.015;
-    alissaBillboard.rotation.y += 0.025;
-    alissaBillboard.rotation.z += 0.015;
+    if (!isInitialPosition) {  
+        alissaBillboard.rotation.x -= 0.015;
+        alissaBillboard.rotation.y += 0.025;
+        alissaBillboard.rotation.z += 0.015;
+    }
+
+    
     alissaBillboard.position.z -= scrollDelta * 0.004;
     //alissaBillboard.position.y += scrollDelta * 0.0016;
     alissaBillboard.position.y += scrollDelta * 0.0012;
@@ -338,7 +351,22 @@ function moveCamera() {
     });
 
     prevScrollY = window.scrollY;
-    
+
+    // Reset the position and rotation of the Alissa billboard when at the top
+if (isAtTop) {
+        clearTimeout(initialPositionTimeout);
+        isInitialPosition = true;
+        alissaBillboard.position.copy(initialPosition);
+        alissaBillboard.rotation.copy(initialRotation);
+
+        initialPositionTimeout = setTimeout(() => {
+            isInitialPosition = false;
+        }, 3000);  // Delay rotation for 3 seconds
+    } else {
+        // Ensure initialPosition is false when not at top
+        isInitialPosition = false;
+    }
+
     
     moveCarOnScroll();
 }
@@ -359,9 +387,9 @@ function animate() {
 
     if (isAtBottom) {
         // Continuous rotation at the bottom
-        alissaBillboard.rotation.x -= 0.023;
-        alissaBillboard.rotation.y += 0.023;
-        alissaBillboard.rotation.z += 0.023;
+        alissaBillboard.rotation.x -= 0.027;
+        alissaBillboard.rotation.y += 0.027;
+        alissaBillboard.rotation.z += 0.027;
     }
 
     controls.update();
