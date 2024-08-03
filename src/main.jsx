@@ -81,15 +81,15 @@ const skyscrapers = [];
 
 function addSkyscraper(x, z) {
     const skyscraperHeight = Math.random() * 23 + 20;
-    const skyscraperGeometry = new THREE.BoxGeometry(8, skyscraperHeight, 5);
+    const skyscraperGeometry = new THREE.BoxGeometry(9, skyscraperHeight, 5);
     const randomSkyscraperTexture = skyscraperTextures[Math.floor(Math.random() * skyscraperTextures.length)];
     const skyscraperMaterial = new THREE.MeshStandardMaterial({ map: randomSkyscraperTexture });
     const skyscraper = new THREE.Mesh(skyscraperGeometry, skyscraperMaterial);
-    skyscraper.position.set(x, skyscraperHeight / 2 - 53, z); // Adjust position based on height
+    skyscraper.position.set(x, skyscraperHeight / 2 - 54, z); // Adjust position based on height
     scene.add(skyscraper);
 
     // Billboard
-    const billboardGeometry = new THREE.PlaneGeometry(10, 7);
+    const billboardGeometry = new THREE.PlaneGeometry(12, 8);
     const randomTexture = billboardTextures[Math.floor(Math.random() * billboardTextures.length)];
     const billboardMaterial = new THREE.MeshStandardMaterial({ map: randomTexture, transparent: true });
     const billboard = new THREE.Mesh(billboardGeometry, billboardMaterial);
@@ -109,8 +109,8 @@ function addSkyscraper(x, z) {
 
 // Add multiple skyscrapers
 const billboards = [];
-for (let i = 0; i < 50; i++) {
-    const x = Math.random() * 255 - 120;
+for (let i = 0; i < 25; i++) {
+    const x = Math.random() * 260 - 125;
     const z = Math.random() * 140 - 85;
     const billboard = addSkyscraper(x, z);
     billboards.push(billboard);
@@ -141,7 +141,7 @@ const initialRotation = alissaBillboard.rotation.clone();
 
 // Add a RectAreaLight to illuminate the Alissa billboard
 const rectLight = new THREE.RectAreaLight(0xffffff, 0.6, 70, 70); // Color, intensity, width, height
-rectLight.position.set(9.5, 1, 35); // Position the light
+rectLight.position.set(9.5, 5, 32); // Position the light
 rectLight.lookAt(alissaBillboard.position); // Point the light at the Alissa billboard
 
 // Add the RectAreaLight to the scene
@@ -152,7 +152,7 @@ const gridMaterial = new THREE.MeshBasicMaterial({ map: gridTexture, side: THREE
 const gridGeometry = new THREE.PlaneGeometry(650, 280);
 const gridPlane = new THREE.Mesh(gridGeometry, gridMaterial);
 gridPlane.rotation.x = - Math.PI / 2;
-gridPlane.rotation.y = -0.07;
+gridPlane.rotation.y = -0.08;
 gridPlane.position.y = -50;
 scene.add(gridPlane);
 
