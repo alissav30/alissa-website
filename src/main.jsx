@@ -118,11 +118,15 @@ for (let i = 0; i < 50; i++) {
 
 // Load and position Alissa's picture
 const alissaTexture = new THREE.TextureLoader().load('/assets/alissa-pic-10.jpg');
-const alissaBillboardGeometry = new THREE.BoxGeometry(21, 21, 21);
+const alissaBillboardGeometry = new THREE.BoxGeometry(21.2, 21.2, 21.2);
 const alissaBillboardMaterial = new THREE.MeshStandardMaterial({ map: alissaTexture});
 const alissaBillboard = new THREE.Mesh(alissaBillboardGeometry, alissaBillboardMaterial);
-alissaBillboard.position.set(10.5, 2.1, 8);
-alissaBillboard.rotation.set(0.38, -0.5, -0.12);
+//alissaBillboard.position.set(10.5, 2.1, 8);
+//alissaBillboard.rotation.set(0.38, -0.5, -0.12);
+
+// updating position & rotation so the billboard is centered and facing the viewer
+alissaBillboard.position.set(9.5, -0.2, 8);
+alissaBillboard.rotation.set(0.22, -0.36, 0.06);
 scene.add(alissaBillboard);
 
 // Create neon edge
@@ -137,7 +141,7 @@ const initialRotation = alissaBillboard.rotation.clone();
 
 // Add a RectAreaLight to illuminate the Alissa billboard
 const rectLight = new THREE.RectAreaLight(0xffffff, 0.6, 70, 70); // Color, intensity, width, height
-rectLight.position.set(10.5, 8, 40); // Position the light
+rectLight.position.set(9.5, 1, 35); // Position the light
 rectLight.lookAt(alissaBillboard.position); // Point the light at the Alissa billboard
 
 // Add the RectAreaLight to the scene
@@ -212,18 +216,45 @@ const carPointLight = new THREE.PointLight(0xffffff);
 carPointLight.position.set(30, -20, -20);
 
 // Function to animate the rocket
+let isRocketFlying = true; // State variable to track if the rocket is flying
+let rocketPauseEndTime = null; // Variable to track when the pause should end
 let rocketAngle = 0;
-function animateRocket() {
-    const radius = 90;
-    const speed = 0.0295;
-    rocketAngle += speed;
-    rocket.forEach(car => {
-        car.position.x = radius * Math.cos(rocketAngle);
-        car.position.z = -2 * radius * Math.sin(rocketAngle);
-        car.position.y = 30 + 12 * 4.4 * Math.sin(rocketAngle); 
-    });
-}
+let hasPaused = false; // Flag to check if the rocket has already paused in the current rotation
 
+function animateRocket() {
+    if (rocketPauseEndTime && Date.now() < rocketPauseEndTime) {
+        return; // Skip animation if the rocket is paused
+    }
+
+    if (Date.now() >= rocketPauseEndTime) {
+        isRocketFlying = true; // Resume flying after the pause
+    }
+
+    if (isRocketFlying) {
+        const radius = 90;
+        const speed = 0.0295;
+        rocketAngle += speed;
+
+        rocket.forEach(car => {
+            car.position.x = radius * Math.cos(rocketAngle);
+            car.position.z = -2 * radius * Math.sin(rocketAngle);
+            car.position.y = 30 + 12 * 4.4 * Math.sin(rocketAngle);
+
+            // Check if the rocket has crossed the threshold and hasn't paused yet
+            if (car.position.z > 100 && !hasPaused) {
+                isRocketFlying = false; // Stop flying if off screen
+                rocketPauseEndTime = Date.now() + 3000; // Set pause end time to 3 seconds from now
+                hasPaused = true; // Set the flag to true to prevent multiple pauses
+            }
+
+            // Reset the flag after completing a full cycle
+            if (rocketAngle >= 2 * Math.PI) {
+                rocketAngle -= 2 * Math.PI;
+                hasPaused = false;
+            }
+        });
+    }
+}
 
 const cars = []
 function loadCar2Model() {
@@ -281,7 +312,7 @@ function changeBillboardTexture() {
 }
 
 // Change billboard texture every 5 seconds
-setInterval(changeBillboardTexture, 3000);
+setInterval(changeBillboardTexture, 5000);
 
 let prevScrollY = window.scrollY;
 
@@ -289,6 +320,8 @@ let isAtBottom = false;
 let isAtTop = true;
 let isInitialPosition = true;
 let initialPositionTimeout;
+let rotationDelayTimeout;
+let hasScrolled = false; // Flag to track if scroll event was initiated
 
 
     function isPageAtBottom() {
@@ -307,13 +340,13 @@ let initialPositionTimeout;
     }
 
 function rotateBillboardOnScroll(deltaY) {
-    if (!isInitialPosition) {  // Add this check
-        alissaBillboard.rotation.x += 0.042;
+    if (!isInitialPosition) {  
+        console.log("billboard rotate on scroll");
+        alissaBillboard.rotation.x -= 0.042;
         alissaBillboard.rotation.y += 0.035;
         alissaBillboard.rotation.z += 0.035;
     }
 }
-
 
 function moveCamera() {
     const t = document.body.getBoundingClientRect().top;
@@ -322,11 +355,20 @@ function moveCamera() {
     isAtBottom = isPageAtBottom();
     isAtTop = isPageAtTop();
 
+    if (!isAtTop && !hasScrolled) {
+        console.log('called rotation delay');
+        hasScrolled = true; // Set the scroll flag
+        clearTimeout(rotationDelayTimeout); // Clear any existing timeout
+        rotationDelayTimeout = setTimeout(() => {
+            isInitialPosition = false; // Allow rotation to start after delay
+        }, 3000); // Set delay to 2 seconds (2000 milliseconds)
+    }
+
     // Scroll-triggered rotation
     if (!isInitialPosition) {  
-        alissaBillboard.rotation.x -= 0.015;
-        alissaBillboard.rotation.y += 0.025;
-        alissaBillboard.rotation.z += 0.015;
+        alissaBillboard.rotation.x += 0.01;
+        alissaBillboard.rotation.y += 0.007;
+        alissaBillboard.rotation.z += 0.008;
     }
 
     
@@ -352,21 +394,19 @@ function moveCamera() {
 
     prevScrollY = window.scrollY;
 
-    // Reset the position and rotation of the Alissa billboard when at the top
-if (isAtTop) {
+    // Reset the position and rotation of alissa billboard when at the top
+    if (isAtTop) {
         clearTimeout(initialPositionTimeout);
+        clearTimeout(rotationDelayTimeout); // Clear rotation delay timeout when at the top
         isInitialPosition = true;
+        hasScrolled = false; // Reset the scroll flag
         alissaBillboard.position.copy(initialPosition);
         alissaBillboard.rotation.copy(initialRotation);
 
         initialPositionTimeout = setTimeout(() => {
-            isInitialPosition = false;
-        }, 3000);  // Delay rotation for 3 seconds
-    } else {
-        // Ensure initialPosition is false when not at top
-        isInitialPosition = false;
+            isInitialPosition = false; // Allow rotation to start after delay
+        }, 3000); // Delay rotation for 3 seconds
     }
-
     
     moveCarOnScroll();
 }
