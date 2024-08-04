@@ -141,7 +141,8 @@ const initialRotation = alissaBillboard.rotation.clone();
 
 // Add a RectAreaLight to illuminate the Alissa billboard
 const rectLight = new THREE.RectAreaLight(0xffffff, 0.6, 70, 70); // Color, intensity, width, height
-rectLight.position.set(9.5, 5, 34); // Position the light
+rectLight.position.set(9.5, 20, 28); // Position the light
+//rectLight.position.set(9.5, 5, 34);
 rectLight.lookAt(alissaBillboard.position); // Point the light at the Alissa billboard
 
 // Add the RectAreaLight to the scene
