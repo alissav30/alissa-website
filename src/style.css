@@ -15,6 +15,7 @@ canvas {
   font-style: normal;
   font-family: 'Bitter', sans-serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  --highlight-color: #e8a0be;
 }
 
 li {
@@ -358,6 +359,21 @@ canvas {
     animation: scaleIn 0.5s forwards;
 }
 
+.modal-content-addis {
+    text-align: center; /* Center align text inside the modal content */
+    background-color: #333;
+    color: white;
+    margin: 4% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 480px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    animation: scaleIn 0.5s forwards;
+}
+
 @keyframes scaleIn {
     from { transform: scale(0.7); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
@@ -480,6 +496,16 @@ canvas {
 }
 
 .modal .modal-content p {
+    font-family: 'Bitter', sans-serif;
+    font-size: 17px;
+    margin-top: 18px;
+    margin-bottom: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    line-height: 1.5rem;
+}
+
+.modal .modal-content-addis p {
     font-family: 'Bitter', sans-serif;
     font-size: 17px;
     margin-top: 18px;
@@ -675,3 +701,21 @@ canvas {
     }
   }
   
+  .highlight {
+    color: var(--highlight-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .highlight:hover {
+    color: darken(var(--highlight-color), 10%);
+  }
+
+  .modal-content-addis i {
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: var(--highlight-color);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }

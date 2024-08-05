@@ -36,7 +36,7 @@
     
             <ul>
                 <li>I'm a Stanford grad with my M.S. in Computer Science (on the Human-Computer Interaction Track) and my B.A. in Political Science.</li>
-                <li>I'm half-Ethiopian and half-French and was born in Addis Abeba, Ethiopia.</li>
+                <li>I'm half-Ethiopian and half-French and was born in <span id="addis-abeba" onclick="openModal('addisAbebaModal')" class="highlight">Addis Abeba</span>, Ethiopia.</li>
                 <li>I'm passionate about the intersection of technology, policy, and social impact.</li>
                 <li>I'm a web developer, designer, product manager, and data scientist excited to work on end-to-end technical social impact projects in spheres like access to justice, education, housing, etc.</li>
                 <li>In my free time, I enjoy playing rugby, creating digital art, writing slam poetry, and curating music.</li>
@@ -471,6 +471,18 @@
                 <div class="link-container">
                     <div class="link-item"><a href="https://docs.google.com/document/d/1tpGE4qNGJxQSV_zbeiZQsU-48ZpxBvjPle8i094kX8M/edit" target="_blank">View Project</a></div>
                 </div>
+            </div>
+        </div>
+
+        <div id="addisAbebaModal" class="modal">
+            <div class="modal-content-addis">
+                <span class="close" onclick="closeModal('addisAbebaModal')">&times;</span>
+                <i class="fas fa-lightbulb"></i>
+                <p>If you've heard of Addis Abeba before or seen it on maps, you have probably seen it spelled "Addis Ababa."
+                    Most maps and mentions of Ethiopia in the West use this mispelling of the capital, so much so that it has become the default. 
+                    For context, we can break down the words to understand the meaning: "addis" means "new," "ababa" means "father," and "abeba" means "flower."
+                    This means that the way it is widely spelled in the West means "New Father" rather than "New Flower," as intended.
+                </p>
             </div>
         </div>
         
